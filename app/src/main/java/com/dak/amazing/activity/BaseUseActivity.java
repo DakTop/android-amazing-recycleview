@@ -7,13 +7,13 @@ import android.support.v7.widget.RecyclerView;
 
 import com.dak.amazing.MainActivity;
 import com.dak.amazing.R;
-import com.dak.amazing.adapter.RecycleViewAdapter;
+import com.dak.amazing.adapter.BaseUseRecycleViewAdapter;
 
 /**
  * RecycleView最基本的使用
  */
 public class BaseUseActivity extends AppCompatActivity {
-    private RecycleViewAdapter adapter;
+    private BaseUseRecycleViewAdapter adapter;
     private RecyclerView recyclerView;
 
     @Override
@@ -23,7 +23,7 @@ public class BaseUseActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycle_baseuse);
         //设置RecycleView的布局管理器
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecycleViewAdapter(this);
+        adapter = new BaseUseRecycleViewAdapter(this);
         recyclerView.setAdapter(adapter);
         adapter.notifyData(MainActivity.listData);
     }

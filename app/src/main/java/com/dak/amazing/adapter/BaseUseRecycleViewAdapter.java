@@ -15,29 +15,30 @@ import java.util.List;
 
 /**
  * RecycleView基本使用的adapter
- *
+ * <p>
  * 1、首先Adapter会调用getItemCount()方法，RecycleView会询问adapter拥有列表包含多少个元素。
  * 2、RecycleView调用onCreateViewHolder()方法创建ViewHolder,以及ViewHolder管理的视图。
  * 3、最后RecycleView会传入ViewHolder及通过LayoutManager来确定其位置，并调用onBindViewHolder()方法绑定相应位置上的数据到ViewHolder。
- *
+ * <p>
  * 说明：这里并不是数据集合中有多少数据就会创建多少ViewHolder。RecycleView的复用机制就在这里：ViewHolder的创建数量就是你在有限的窗口内所展示itemView的最大数量。
  * 比如你的RecycleView设置的大小正好能展示5个itemVeiw，那么RecycleView只会创建5个ViewHolder（也就是说onCreateViewHolder()方法只会执行5次），
- * 当列表滚动时，滑出屏幕的ViewHolder会被回收，下面新滑进屏幕的item会复用刚刚滑出屏幕的ViewHolder，这样就可以通过回收旧的ViewHolder来节省时间和内存。
- *
- *
+ * 当列表滚动时，滑出屏幕的ViewHolder会被回收，下面新滑进屏幕的item就是复用刚刚滑出屏幕的ViewHolder并且调用onBindViewHolder()方法重新绑定viewHolder的数据，
+ * 这样就可以通过回收旧的ViewHolder来节省时间和内存。
+ * <p>
  * Created by bazengliang on 2017/7/18.
  */
-public class RecycleViewAdapter extends RecyclerView.Adapter<BaseUseViewHolder> {
+public class BaseUseRecycleViewAdapter extends RecyclerView.Adapter<BaseUseViewHolder> {
 
     private List<DataItem> list = new ArrayList<>();
     private Context context;
 
-    public RecycleViewAdapter(Context context) {
+    public BaseUseRecycleViewAdapter(Context context) {
         this.context = context;
     }
 
     /**
-     * 创建并返回一个相应类型的ViewHolder
+     * 创建并返回一个相应类型的ViewHolder，每当调用完此方法，会立即调用onBindViewHolder()方法绑定数据，
+     * 然后再次调用此方法创建下一个ViewHolder,然后继续调用onBindViewHolder()方法绑定数据，以此类推...
      *
      * @param parent
      * @param viewType
