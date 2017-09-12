@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.BaseUseActivity" />
-        <activity android:name=".activity.CurrencyAdapterActivity"></activity>
+        <activity android:name=".activity.CurrencyAdapterActivity" />
+        <activity android:name=".activity.SwitchLayoutActivity"></activity>
     </application>
 
 </manifest>

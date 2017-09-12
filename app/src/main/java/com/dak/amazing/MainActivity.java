@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.dak.amazing.activity.BaseUseActivity;
 import com.dak.amazing.activity.CurrencyAdapterActivity;
+import com.dak.amazing.activity.SwitchLayoutActivity;
 import com.dak.amazing.model.DataItem;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void layoutSwitch(View view) {
-
+        this.startActivity(new Intent(this, SwitchLayoutActivity.class));
     }
 
     @Override
