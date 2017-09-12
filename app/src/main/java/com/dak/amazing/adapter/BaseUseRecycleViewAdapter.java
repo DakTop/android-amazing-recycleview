@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.dak.amazing.R;
 import com.dak.amazing.adapter.ViewHolder.BaseUseViewHolder;
+import com.dak.amazing.listener.OnRecycleItemClickListener;
 import com.dak.amazing.model.DataItem;
 
 import java.util.ArrayList;
@@ -29,8 +30,9 @@ import java.util.List;
  */
 public class BaseUseRecycleViewAdapter extends RecyclerView.Adapter<BaseUseViewHolder> {
 
-    private List<DataItem> list = new ArrayList<>();
+    private List<DataItem> listData = new ArrayList<>();
     private Context context;
+    private OnRecycleItemClickListener<DataItem> onRecycleItemClickListener;
 
     public BaseUseRecycleViewAdapter(Context context) {
         this.context = context;
@@ -46,8 +48,10 @@ public class BaseUseRecycleViewAdapter extends RecyclerView.Adapter<BaseUseViewH
      */
     @Override
     public BaseUseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_holder_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_linear_holder_item, parent, false);
         BaseUseViewHolder myViewHolder = new BaseUseViewHolder(view);
+        //设置点击事件
+        setItemViewListener(viewType, myViewHolder, view);
         return myViewHolder;
     }
 
@@ -59,18 +63,48 @@ public class BaseUseRecycleViewAdapter extends RecyclerView.Adapter<BaseUseViewH
      */
     @Override
     public void onBindViewHolder(BaseUseViewHolder holder, int position) {
-        holder.textView.setText(list.get(position).getText());
+        holder.textView.setText(listData.get(position).getText());
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return listData.size();
     }
 
     public void notifyData(List<DataItem> mlist) {
-        list.clear();
-        list.addAll(mlist);
+        listData.clear();
+        listData.addAll(mlist);
         this.notifyDataSetChanged();
+    }
+
+    /**
+     * 设置itemView项监听
+     *
+     * @param viewHolderType ViewHolder的类型，可以通过判断类型设置不同的点击效果
+     * @param viewHolder
+     * @param view
+     */
+    private void setItemViewListener(int viewHolderType, final RecyclerView.ViewHolder viewHolder, View view) {
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //通过ViewHolder获取它在列表的位置
+                int position = viewHolder.getAdapterPosition();
+                if (onRecycleItemClickListener != null) {
+                    onRecycleItemClickListener.onRecycleItemClick(v, listData.get(position), position);
+                }
+            }
+        });
+    }
+
+    /**
+     * 设置itemView的点击事件
+     *
+     * @param onRecycleItemClickListener
+     */
+    public void setOnRecycleItemClickListener(OnRecycleItemClickListener onRecycleItemClickListener) {
+        this.onRecycleItemClickListener = onRecycleItemClickListener;
     }
 }
 
