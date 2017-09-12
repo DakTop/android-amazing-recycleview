@@ -15,6 +15,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="showCurrencyAdapter"
+        android:text="通用RecycleViewAdapter"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="layoutSwitch"
         android:text="RecycleView的布局样式切换"
         android:textAllCaps="false" />

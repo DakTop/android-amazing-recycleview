@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.dak.amazing.activity.BaseUseActivity;
+import com.dak.amazing.activity.CurrencyAdapterActivity;
 import com.dak.amazing.model.DataItem;
 
 import java.util.ArrayList;
@@ -36,11 +37,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * 展示一个通用的Adapter
+     *
+     * @param view
+     */
+    public void showCurrencyAdapter(View view) {
+        this.startActivity(new Intent(this, CurrencyAdapterActivity.class));
+    }
+
+    /**
      * 布局样式切换，纵向列表布局与网格布局之间的切换
      *
      * @param view
      */
     public void layoutSwitch(View view) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        listData.clear();
+        super.onDestroy();
     }
 }
