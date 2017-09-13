@@ -1,4 +1,4 @@
-package com.dak.amazing.adapter;
+package com.dak.amazing.adapter.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;

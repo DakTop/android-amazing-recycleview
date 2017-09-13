@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.dak.amazing.adapter.ViewHolder.CurrencyViewHolder;
 import com.dak.amazing.listener.OnRecycleItemClickListener;
 import com.dak.amazing.tools.Tools;
 

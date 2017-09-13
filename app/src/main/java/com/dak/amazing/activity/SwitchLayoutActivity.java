@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.dak.amazing.MainActivity;
 import com.dak.amazing.R;
 import com.dak.amazing.adapter.CurrencyAdapter;
-import com.dak.amazing.adapter.CurrencyViewHolder;
+import com.dak.amazing.adapter.ViewHolder.CurrencyViewHolder;
 import com.dak.amazing.listener.OnRecycleItemClickListener;
 import com.dak.amazing.model.DataItem;
 
