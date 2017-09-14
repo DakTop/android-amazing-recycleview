@@ -12,6 +12,7 @@ import com.dak.amazing.R;
 import com.dak.amazing.adapter.BaseUseRecycleViewAdapter;
 import com.dak.amazing.listener.OnRecycleItemClickListener;
 import com.dak.amazing.model.DataItem;
+import com.dak.amazing.view.RecycleViewItemDecoration;
 
 /**
  * RecycleView最基本的使用
@@ -27,6 +28,7 @@ public class BaseUseActivity extends AppCompatActivity implements OnRecycleItemC
         recyclerView = (RecyclerView) findViewById(R.id.recycle_baseuse);
         //设置RecycleView的布局管理器
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new RecycleViewItemDecoration());
         adapter = new BaseUseRecycleViewAdapter(this);
         adapter.setOnRecycleItemClickListener(this);
         recyclerView.setAdapter(adapter);
