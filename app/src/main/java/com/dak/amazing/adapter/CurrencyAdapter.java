@@ -55,6 +55,10 @@ public abstract class CurrencyAdapter<T> extends RecyclerView.Adapter<CurrencyVi
         return listData.size();
     }
 
+    public T getItemByPosition(int position) {
+        return position <= listData.size() - 1 ? listData.get(position) : null;
+    }
+
     /**
      * 刷新列表页
      *
